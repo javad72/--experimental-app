@@ -15,9 +15,11 @@ import {
 } from "@/components/ui/sidebar"
 import "@/styles/globals.css";
 export default function Page(props) {
+
     return (
         <html>
           <body>
+
              <SidebarProvider>
               <AppSidebar />
               <SidebarInset>
@@ -47,3 +49,15 @@ export default function Page(props) {
         </html>
     )
 }
+// export async function getStaticProps() {
+// export async function getServerSideProps() {
+//     const res = await fetch('http://localhost:3001/navMain'); // JSON Server endpoint
+//     const data1 = await res.json();
+//     console.log(data1)
+//     console.log('data1')
+//     return {
+//         props: {
+//             menu: data1, // Pass menu data as a prop
+//         },
+//     };
+// }

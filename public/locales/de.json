@@ -1,7 +1,12 @@
 {
   "sidebar": {
     "dashboard": "Dashboard",
-    "users": "Users",
-    "settings": "Settings"
+    "users": "Benutzer",
+    "settings": "Einstellungen"
+  },
+  "language": {
+    "fa": "Persisch",
+    "en": "Englisch",
+    "de": "Deutsch"
   }
 }

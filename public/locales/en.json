@@ -3,5 +3,10 @@
     "dashboard": "Dashboard",
     "users"    : "Users",
     "settings" : "Settings"
+  },
+  "language": {
+    "fa" : "Persian" ,
+    "en" : "English" ,
+    "de" : "German"
   }
 }

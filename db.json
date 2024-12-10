@@ -1,0 +1,48 @@
+
+{
+  "languages": ["fa", "en", "de"],
+  "navMain": [
+    {
+      "title": "Overview",
+      "url": "overview",
+      "items": []
+    },
+    {
+      "title": "Orders",
+      "url": "#",
+      "items": [
+        {
+          "title": "Pending Orders",
+          "url": "#pending-orders",
+          "items": []
+        },
+        {
+          "title": "Completed Orders",
+          "url": "#completed-orders",
+          "items": []
+        },
+        {
+          "title": "Cancelled Orders",
+          "url": "#cancelled-orders",
+          "items": []
+        },
+        {
+          "title": "Order History",
+          "url": "#order-history",
+          "items": []
+        },
+        {
+          "title": "Track Order",
+          "url": "#track-order",
+          "items": []
+        }
+      ]
+    },
+    {
+      "title": "Settings",
+      "url": "settings",
+      "items": []
+    }
+  ]
+}
+
