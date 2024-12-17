@@ -66,11 +66,9 @@ const data =
 
 
 export function AppSidebar({ menu , ...props }: React.ComponentProps<typeof Sidebar>  & { menu: any }) {
-
-    console.log(props.menu)
     return (
         <Sidebar {...props}>
-            <SidebarHeader>
+            <SidebarHeader >
                 <VersionSwitcher
                     versions={data.languages}
                     defaultVersion={data.languages[0]}

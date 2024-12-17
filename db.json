@@ -1,22 +1,38 @@
-
 {
-  "languages": ["fa", "en", "de"],
+  "languages": [
+    {
+      "title": "fa",
+      "id" : 1
+    },
+    {
+      "title": "en",
+      "id" : 2
+    },
+    {
+      "title": "de",
+      "id" : 3
+    }
+  ],
   "navMain": [
     {
+      "id": 1 ,
       "title": "Overview",
       "url": "overview",
       "items": []
     },
     {
+      "id": 2 ,
       "title": "Orders",
       "url": "#",
       "items": [
         {
+          "id": 1 ,
           "title": "Pending Orders",
           "url": "#pending-orders",
           "items": []
         },
         {
+          "id": 2 ,
           "title": "Completed Orders",
           "url": "#completed-orders",
           "items": []
@@ -27,11 +43,13 @@
           "items": []
         },
         {
+          "id": 3 ,
           "title": "Order History",
           "url": "#order-history",
           "items": []
         },
         {
+          "id": 4 ,
           "title": "Track Order",
           "url": "#track-order",
           "items": []
@@ -39,6 +57,7 @@
       ]
     },
     {
+      "id": 3 ,
       "title": "Settings",
       "url": "settings",
       "items": []
