@@ -1,7 +1,7 @@
 
 const Page = async () => {
     try {
-        const res = await fetch('http://localhost:3000/languages', {
+        const res = await fetch('http://localhost:4000/languages', {
             cache: 'no-store',
         });
 

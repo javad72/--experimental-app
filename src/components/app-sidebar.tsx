@@ -16,7 +16,7 @@ import {
 // This is sample data.
 const data =
     {
-        "languages": ["fa", "en", "de"],
+        "languages": ["fa", "en"],
         "navMain": [
             {
                 "title": "Overview",
@@ -65,9 +65,30 @@ const data =
 
 
 
-export function AppSidebar({ menu , ...props }: React.ComponentProps<typeof Sidebar>  & { menu: any }) {
+export async function AppSidebar({ menu , ...props }: React.ComponentProps<typeof Sidebar>  & { menu: any }) {
+
+
+    // let data = {}
+    // try {
+    //     const res = await fetch('http://localhost:4000', {
+    //         cache: 'no-store',
+    //     });
+    //
+    //     if (!res.ok) {
+    //         throw new Error(`HTTP error! status: ${res.status}`);
+    //     }
+    //
+    //     data = await res.json();
+    //     console.log(data);
+    //
+    //
+    // } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //     return <div>Failed to load data</div>;
+    // }
+
     return (
-        <Sidebar {...props}>
+        <Sidebar side="right" {...props}>
             <SidebarHeader >
                 <VersionSwitcher
                     versions={data.languages}

@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sidebar"
 import "@/styles/globals.css";
 import React from "react";
+import {ChevronLeft} from "lucide-react";
 
 
 export default async function Layout({
@@ -23,7 +24,7 @@ export default async function Layout({
     children: React.ReactNode;
 }) {
     return (
-        <html>
+        <html dir="rtl">
           <body>
 
              <SidebarProvider>
@@ -36,10 +37,12 @@ export default async function Layout({
                               <BreadcrumbList>
                                   <BreadcrumbItem className="hidden md:block">
                                       <BreadcrumbLink href="#">
-                                          Building Your Application
+                                          home
                                       </BreadcrumbLink>
                                   </BreadcrumbItem>
-                                  <BreadcrumbSeparator className="hidden md:block" />
+                                  <BreadcrumbSeparator>
+                                      <ChevronLeft />
+                                  </BreadcrumbSeparator>
                                   <BreadcrumbItem>
                                       <BreadcrumbPage>Data Fetching</BreadcrumbPage>
                                   </BreadcrumbItem>
