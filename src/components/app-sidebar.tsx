@@ -1,6 +1,6 @@
 import * as React from "react"
 import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
+import { LangSwitcher } from "@/components/lang-switcher"
 import {
     Sidebar,
     SidebarContent,
@@ -13,87 +13,47 @@ import {
     SidebarMenuItem,
     SidebarRail,
 } from "@/components/ui/sidebar"
-// This is sample data.
-const data =
-    {
-        "languages": ["fa", "en"],
-        "navMain": [
-            {
-                "title": "Overview",
-                "url": "overview",
-                "items": []
-            },
-            {
-                "title": "Orders",
-                "url": "#",
-                "items": [
-                    {
-                        "title": "Pending Orders",
-                        "url": "#pending-orders",
-                        "items": []
-                    },
-                    {
-                        "title": "Completed Orders",
-                        "url": "#completed-orders",
-                        "items": []
-                    },
-                    {
-                        "title": "Cancelled Orders",
-                        "url": "#cancelled-orders",
-                        "items": []
-                    },
-                    {
-                        "title": "Order History",
-                        "url": "#order-history",
-                        "items": []
-                    },
-                    {
-                        "title": "Track Order",
-                        "url": "#track-order",
-                        "items": []
-                    }
-                ]
-            },
-            {
-                "title": "Settings",
-                "url": "settings",
-                "items": []
-            }
-        ]
+type defaultLang = {
+    "title": string , 
+    "id": number
+}
+
+export  function AppSidebar({ menu , ...props }: React.ComponentProps<typeof Sidebar>  & { menu: any }) {
+
+    let data = { navMain: [] }; 
+
+    const LanguageComponent = async()=>{
+       
+        try {
+        const res = await fetch('http://localhost:4000/languages', {
+            cache: 'no-store',
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const langs:defaultLang[] = await res.json();
+        console.log('langs:');
+        console.log(langs);
+        return(
+            <LangSwitcher
+                    langs={langs}
+                    defaultLang={langs[0]}
+                />
+        )
+        
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return <div>Failed to load languages</div>;
+    } 
     }
-
-
-
-
-export async function AppSidebar({ menu , ...props }: React.ComponentProps<typeof Sidebar>  & { menu: any }) {
-
-
-    // let data = {}
-    // try {
-    //     const res = await fetch('http://localhost:4000', {
-    //         cache: 'no-store',
-    //     });
-    //
-    //     if (!res.ok) {
-    //         throw new Error(`HTTP error! status: ${res.status}`);
-    //     }
-    //
-    //     data = await res.json();
-    //     console.log(data);
-    //
-    //
-    // } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //     return <div>Failed to load data</div>;
-    // }
+   
 
     return (
         <Sidebar side="right" {...props}>
             <SidebarHeader >
-                <VersionSwitcher
-                    versions={data.languages}
-                    defaultVersion={data.languages[0]}
-                />
+                <LanguageComponent />
                 <SearchForm />
             </SidebarHeader>
             <SidebarContent>

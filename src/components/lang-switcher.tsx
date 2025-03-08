@@ -11,15 +11,19 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-} from "@/components/ui/sidebar"
-export function VersionSwitcher({
-    versions,
-    defaultVersion,
-                                }: {
-    versions: string[]
-    defaultVersion: string
+} from "@/components/ui/sidebar";
+type defaultLang = {
+    "title": string , 
+    "id": number
+}
+export function LangSwitcher({
+    langs,
+    defaultLang,
+    }: {
+    langs: defaultLang[]
+    defaultLang
 }) {
-    const [selectedVersion, setSelectedVersion] = React.useState(defaultVersion)
+    const [selectedLang, setSelectedLang] = React.useState(defaultLang)
     return (
         <SidebarMenu>
             <SidebarMenuItem>
@@ -33,8 +37,8 @@ export function VersionSwitcher({
                                 <GalleryVerticalEnd className="size-4" />
                             </div>
                             <div className="flex flex-col gap-0.5 leading-none">
-                                <span className="font-semibold">Language</span>
-                                <span className="">{selectedVersion}</span>
+                                <span className="font-semibold">زبان ها</span>
+                                <span className="">{selectedLang.title}</span>
                             </div>
                             <ChevronsUpDown className="ml-auto" />
                         </SidebarMenuButton>
@@ -43,13 +47,13 @@ export function VersionSwitcher({
                         className="w-[--radix-dropdown-menu-trigger-width]"
                         align="start"
                     >
-                        {versions.map((version) => (
+                        {langs.map((lang) => (
                             <DropdownMenuItem
-                                key={version}
-                                onSelect={() => setSelectedVersion(version)}
+                                key={lang.id}
+                                onSelect={() => setSelectedLang(lang)}
                             >
-                                v{version}{" "}
-                                {version === selectedVersion && <Check className="ml-auto" />}
+                                {lang.title}{" "}
+                                {lang.title === selectedLang.title && <Check className="ml-auto" />}
                             </DropdownMenuItem>
                         ))}
                     </DropdownMenuContent>
