@@ -1,4 +1,3 @@
-import { AppSidebar } from "@/components/app-sidebar"
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -16,6 +15,7 @@ import {
 import "@/styles/globals.css";
 import React from "react";
 import {ChevronLeft} from "lucide-react";
+import {AppSidebar} from "@/components/app-sidebar";
 
 
 export default async function Layout({
@@ -31,13 +31,13 @@ export default async function Layout({
                   <AppSidebar menu={[]} />
                   <SidebarInset>
                       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-                          <SidebarTrigger className="-ml-1" />
+                          <SidebarTrigger className="-ml-1 text-red-950" />
                           <Separator orientation="vertical" className="mr-2 h-4" />
                           <Breadcrumb>
                               <BreadcrumbList>
                                   <BreadcrumbItem className="hidden md:block">
                                       <BreadcrumbLink href="#">
-                                          home
+                                          سامانه تست
                                       </BreadcrumbLink>
                                   </BreadcrumbItem>
                                   <BreadcrumbSeparator>

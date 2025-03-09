@@ -1,82 +1,105 @@
-import * as React from "react"
-import { SearchForm } from "@/components/search-form"
-import { LangSwitcher } from "@/components/lang-switcher"
+import {SearchForm} from "@/components/search-form";
 import {
     Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarGroupLabel,
+    SidebarContent, SidebarGroupLabel,
     SidebarHeader,
-    SidebarMenu,
+    SidebarMenu, SidebarMenuBadge,
     SidebarMenuButton,
     SidebarMenuItem,
-    SidebarRail,
-} from "@/components/ui/sidebar"
-type defaultLang = {
-    "title": string , 
-    "id": number
+    SidebarMenuSub,
+    SidebarMenuSubButton,
+    SidebarMenuSubItem,
+    SidebarRail
+} from "@/components/ui/sidebar";
+import {APP_URL_HOST} from "@/lib/const";
+import {ChevronDown} from "lucide-react";
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
+
+// دریافت داده‌های منو در سمت سرور
+async function getMenuData() {
+    const response = await fetch(`${APP_URL_HOST}/navMain`, {
+        cache: "no-store",
+    });
+
+    if (!response.ok) {
+        throw new Error("خطا در دریافت منو");
+    }
+
+    return response.json();
 }
 
-export  function AppSidebar({ menu , ...props }: React.ComponentProps<typeof Sidebar>  & { menu: any }) {
-
-    let data = { navMain: [] }; 
-
-    const LanguageComponent = async()=>{
-       
-        try {
-        const res = await fetch('http://localhost:4000/languages', {
-            cache: 'no-store',
-        });
-
-        if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-        }
-
-        const langs:defaultLang[] = await res.json();
-        console.log('langs:');
-        console.log(langs);
-        return(
-            <LangSwitcher
-                    langs={langs}
-                    defaultLang={langs[0]}
-                />
-        )
-        
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return <div>Failed to load languages</div>;
-    } 
-    }
-   
+export async function AppSidebar(props) {
+    const menu = await getMenuData();
 
     return (
-        <Sidebar side="right" {...props}>
-            <SidebarHeader >
-                <LanguageComponent />
-                <SearchForm />
+        <Sidebar variant="inset" side="right" {...props}>
+            <SidebarHeader>
+                <SearchForm/>
             </SidebarHeader>
             <SidebarContent>
-                {/* We create a SidebarGroup for each parent. */}
-                {data.navMain.map((item) => (
-                    <SidebarGroup key={item.title}>
-                        <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-                        <SidebarGroupContent>
-                            <SidebarMenu>
-                                {item.items.map((item) => (
-                                    <SidebarMenuItem key={item.title}>
-                                        <SidebarMenuButton asChild isActive={item.isActive}>
-                                            <a href={item.url}>{item.title}</a>
-                                        </SidebarMenuButton>
-                                    </SidebarMenuItem>
-                                ))}
-                            </SidebarMenu>
-                        </SidebarGroupContent>
-                    </SidebarGroup>
-                ))}
+                {menu.length > 0 ? (
+                    <Menus navMain={menu}/>
+                ) : (
+                    <p>منو در دسترس نیست</p>
+                )}
             </SidebarContent>
-            <SidebarRail />
+            <SidebarRail/>
         </Sidebar>
-    )
+    );
 }
 
+const SvgIcon = ({svgString}) => (
+    <span dangerouslySetInnerHTML={{__html: svgString}}/>
+);
+const Menus = ({navMain}) => {
+    return (
+        <SidebarMenu>
+            {navMain.map((item) => (
+                <SidebarMenuItem key={item.id}>
+
+
+                    {
+                        item.items.length == 0 &&
+                        <SidebarMenuButton>
+                            <SvgIcon svgString={item.icon}/> <span>{item.title}</span>
+                        </SidebarMenuButton>
+                    }
+                    {item.items.length > 0 && (
+                        <Collapsible>
+                            <CollapsibleTrigger className='w-full'>
+                                <SidebarMenuButton>
+                                    <SvgIcon svgString={item.icon}/> <span className='w-100 block'> {item.title}</span>
+                                </SidebarMenuButton>
+                            </CollapsibleTrigger>
+                            <CollapsibleContent>
+                                <SidebarMenuSub>
+                                    {item.items.map((subItem) => (
+                                        <SidebarMenuSubItem key={subItem.id}>
+                                            <SidebarMenuSubButton asChild>
+                                                <a href={subItem.url}>{subItem.title}</a>
+                                            </SidebarMenuSubButton>
+                                        </SidebarMenuSubItem>
+                                    ))}
+                                </SidebarMenuSub>
+                            </CollapsibleContent>
+
+                        </Collapsible>
+                    )}
+
+                </SidebarMenuItem>
+            ))}
+        </SidebarMenu>
+    );
+};
+// <SidebarMenu>
+//     {projects.map((project) => (
+//         <SidebarMenuItem key={project.name}>
+//             <SidebarMenuButton asChild>
+//                 <a href={project.url}>
+//                     <project.icon />
+//                     <span>{project.name}</span>
+//                 </a>
+//             </SidebarMenuButton>
+//         </SidebarMenuItem>
+//     ))}
+// </SidebarMenu>
