@@ -14,6 +14,7 @@ import {
 import {APP_URL_HOST} from "@/lib/const";
 import {ChevronDown} from "lucide-react";
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
+import Logo from "@/components/logo";
 
 // دریافت داده‌های منو در سمت سرور
 async function getMenuData() {
@@ -30,11 +31,22 @@ async function getMenuData() {
 
 export async function AppSidebar(props) {
     const menu = await getMenuData();
+    let links = [];
+    menu.forEach((item) => {
+        if (item.items && item.items.length > 0 && item.link !== '#') {
+            item.items.forEach((subItem) => {
+                links.push({ link: subItem.link, title: subItem.title });
+            });
+        } else {
+            links.push({ link: item.link, title: item.title });
+        }
+    });
 
     return (
         <Sidebar variant="inset" side="right" {...props}>
             <SidebarHeader>
-                <SearchForm/>
+                <Logo />
+                <SearchForm links={links} />
             </SidebarHeader>
             <SidebarContent>
                 {menu.length > 0 ? (
@@ -66,7 +78,7 @@ const Menus = ({navMain}) => {
                     }
                     {item.items.length > 0 && (
                         <Collapsible>
-                            <CollapsibleTrigger className='w-full'>
+                            <CollapsibleTrigger asChild className='w-full'>
                                 <SidebarMenuButton>
                                     <SvgIcon svgString={item.icon}/> <span className='w-100 block'> {item.title}</span>
                                 </SidebarMenuButton>

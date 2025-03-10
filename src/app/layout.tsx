@@ -12,6 +12,7 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar"
+import '@/styles/font/iransans/iransans.css';
 import "@/styles/globals.css";
 import React from "react";
 import {ChevronLeft} from "lucide-react";
