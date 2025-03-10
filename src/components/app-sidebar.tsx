@@ -43,7 +43,7 @@ export async function AppSidebar(props) {
     });
 
     return (
-        <Sidebar variant="inset" side="right" {...props}>
+        <Sidebar  variant="inset" side="right" {...props}>
             <SidebarHeader>
                 <Logo />
                 <SearchForm links={links} />
@@ -77,13 +77,13 @@ const Menus = ({navMain}) => {
                         </SidebarMenuButton>
                     }
                     {item.items.length > 0 && (
-                        <Collapsible>
-                            <CollapsibleTrigger asChild className='w-full'>
+                        <Collapsible defaultOpen className="group/collapsible" >
+                            <CollapsibleTrigger   asChild className='w-full' >
                                 <SidebarMenuButton>
                                     <SvgIcon svgString={item.icon}/> <span className='w-100 block'> {item.title}</span>
                                 </SidebarMenuButton>
                             </CollapsibleTrigger>
-                            <CollapsibleContent>
+                            <CollapsibleContent >
                                 <SidebarMenuSub>
                                     {item.items.map((subItem) => (
                                         <SidebarMenuSubItem key={subItem.id}>
@@ -103,15 +103,18 @@ const Menus = ({navMain}) => {
         </SidebarMenu>
     );
 };
-// <SidebarMenu>
-//     {projects.map((project) => (
-//         <SidebarMenuItem key={project.name}>
-//             <SidebarMenuButton asChild>
-//                 <a href={project.url}>
-//                     <project.icon />
-//                     <span>{project.name}</span>
-//                 </a>
-//             </SidebarMenuButton>
-//         </SidebarMenuItem>
-//     ))}
-// </SidebarMenu>
+
+<SidebarMenu>
+  <Collapsible defaultOpen className="group/collapsible">
+    <SidebarMenuItem>
+      <CollapsibleTrigger asChild>
+        <SidebarMenuButton />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <SidebarMenuSub>
+          <SidebarMenuSubItem />
+        </SidebarMenuSub>
+      </CollapsibleContent>
+    </SidebarMenuItem>
+  </Collapsible>
+</SidebarMenu>

@@ -1,3 +1,4 @@
+import { AppSidebar } from "@/components/app-sidebar"
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -16,7 +17,6 @@ import '@/styles/font/iransans/iransans.css';
 import "@/styles/globals.css";
 import React from "react";
 import {ChevronLeft} from "lucide-react";
-import {AppSidebar} from "@/components/app-sidebar";
 
 
 export default async function Layout({
@@ -29,16 +29,16 @@ export default async function Layout({
           <body>
 
              <SidebarProvider>
-                  <AppSidebar menu={[]} />
+                  <AppSidebar  />
                   <SidebarInset>
                       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-                          <SidebarTrigger className="-ml-1 text-red-950" />
+                          <SidebarTrigger className="-ml-1" />
                           <Separator orientation="vertical" className="mr-2 h-4" />
                           <Breadcrumb>
                               <BreadcrumbList>
                                   <BreadcrumbItem className="hidden md:block">
                                       <BreadcrumbLink href="#">
-                                          سامانه تست
+                                          home
                                       </BreadcrumbLink>
                                   </BreadcrumbItem>
                                   <BreadcrumbSeparator>
@@ -59,15 +59,3 @@ export default async function Layout({
         </html>
     )
 }
-// export async function getStaticProps() {
-// export async function getServerSideProps() {
-//     const res = await fetch('http://localhost:3001/navMain'); // JSON Server endpoint
-//     const data1 = await res.json();
-//     console.log(data1)
-//     console.log('data1')
-//     return {
-//         props: {
-//             menu: data1, // Pass menu data as a prop
-//         },
-//     };
-// }
