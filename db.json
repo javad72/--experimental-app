@@ -1,46 +1,204 @@
 {
   "navMain": [
     {
-      "id": 1 ,
+      "id": "1",
       "title": "داشبورد",
-      "url": "dashboard",
+      "url": "/panel/dashboard",
       "items": [],
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-layout-dashboard\"><rect width=\"7\" height=\"9\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"9\" x=\"14\" y=\"12\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\"/></svg>"
     },
     {
-      "id": 2 ,
+      "id": "2",
       "title": "فرم ساز",
       "url": "#",
       "items": [
         {
-          "id": 21 ,
+          "id": 21,
           "title": "لیست فرم ها",
-          "url": "list",
+          "url": "/panel/forms/list",
           "items": []
         },
         {
-          "id": 22 ,
+          "id": 22,
           "title": "ایجاد فرم",
-          "url": "list",
-          "items": []
-        },
-        {
-          "id": 23 ,
-          "title": "مشاهده فرم",
-          "url": "show",
+          "url": "/panel/forms/form-creator",
           "items": []
         }
       ],
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-chevrons-left-right-ellipsis\"><path d=\"m18 8 4 4-4 4\"/><path d=\"m6 8-4 4 4 4\"/><path d=\"M8 12h.01\"/><path d=\"M12 12h.01\"/><path d=\"M16 12h.01\"/></svg>"
     },
     {
-      "id": 3 ,
+      "id": "3",
       "title": "تنظیمات",
-      "url": "settings",
+      "url": "/panel/settings",
       "items": [],
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-settings\"><path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg>"
-
+    }
+  ],
+  "forms": [
+    {
+      "id": "1741950020295",
+      "formName": "فرم شماره 5",
+      "components": [
+        {
+          "type": "input",
+          "id": 1741949759264,
+          "title": "نام",
+          "placeholder": "نام را وارد کنید",
+          "require": true,
+          "name": "first_name"
+        },
+        {
+          "type": "input",
+          "id": 1741949788658,
+          "title": "نام خانوادگی",
+          "name": "last_name",
+          "placeholder": "نام خانوادگی را وارد کنید",
+          "require": true
+        },
+        {
+          "type": "range",
+          "id": 1741949900921,
+          "title": "سن",
+          "name": "age",
+          "placeholder": "محدوده سنی",
+          "min": "10",
+          "max": "20",
+          "step": "1",
+          "require": true
+        },
+        {
+          "type": "select",
+          "id": 1741949849377,
+          "title": "جنسیت",
+          "name": "gender",
+          "require": true
+        }
+      ]
+    },
+    {
+      "id": "1741951690069",
+      "formName": "فرم شماره 3",
+      "components": [
+        {
+          "type": "input",
+          "id": 1741951488574,
+          "title": "نام  و نام خانوادگی دانش آموز",
+          "name": "student_name",
+          "placeholder": "نام کامل دانش آموز"
+        },
+        {
+          "type": "input",
+          "id": 1741951496512,
+          "title": "پایه",
+          "name": "grade",
+          "placeholder": "پایه تحصیلی",
+          "inputType": "number"
+        },
+        {
+          "type": "input",
+          "id": 1741951614470,
+          "title": "کلاس",
+          "name": "class",
+          "placeholder": "کلاس",
+          "inputType": "checkbox"
+        }
+      ]
+    },
+    {
+      "id": "1741953868790",
+      "formName": "فرم شماره 2",
+      "components": [
+        {
+          "type": "range",
+          "id": 1741953809446,
+          "title": "ولوم صدا",
+          "name": "volume",
+          "placeholder": "میزان صدا",
+          "min": "0",
+          "max": "100",
+          "step": "1"
+        }
+      ]
+    },
+    {
+      "id": "1741954093795",
+      "formName": "",
+      "components": [
+        {
+          "type": "input",
+          "id": 1741954079284,
+          "title": "ghgg",
+          "name": "ghgg",
+          "placeholder": "jhjhjhjhjhjhj",
+          "require": true
+        }
+      ]
+    },
+    {
+      "id": "1741954193780",
+      "formName": "فرم شماره یک",
+      "components": [
+        {
+          "type": "select",
+          "id": 1741954133893,
+          "title": "نام کالا",
+          "name": "prd name",
+          "placeholder": "product name"
+        }
+      ]
+    },
+    {
+      "id": 1741979848752,
+      "formName": "",
+      "components": [
+        {
+          "type": "input",
+          "id": 1741979794613,
+          "title": "تاذاذتاذ",
+          "name": "dsdsd",
+          "placeholder": "vhhhjhjhh",
+          "inputType": "text"
+        },
+        {
+          "type": "select",
+          "id": 1741979800259
+        },
+        {
+          "type": "input",
+          "id": 1741979798322
+        },
+        {
+          "type": "range",
+          "id": 1741979804256
+        }
+      ]
+    },
+    {
+      "id": 1741979881968,
+      "formName": "فرم نظر سنجی دانش آموزان",
+      "components": [
+        {
+          "type": "input",
+          "id": 1741979794613,
+          "title": "تاذاذتاذ",
+          "name": "dsdsd",
+          "placeholder": "vhhhjhjhh",
+          "inputType": "text"
+        },
+        {
+          "type": "select",
+          "id": 1741979800259
+        },
+        {
+          "type": "input",
+          "id": 1741979798322
+        },
+        {
+          "type": "range",
+          "id": 1741979804256
+        }
+      ]
     }
   ]
 }
-

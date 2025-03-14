@@ -13,7 +13,7 @@
         --popover-foreground: 222.2 47.4% 11.2%;
         --border: 214.3 31.8% 91.4%;
         --input: 214.3 31.8% 91.4%;
-        --card: 0 0% 100%;
+        --card: 166.2 76.5% 96.7%;
         --card-foreground: 222.2 47.4% 11.2%;
         --primary: 222.2 47.4% 11.2%;
         --primary-foreground: 210 40% 98%;
@@ -71,16 +71,138 @@
     * {
         @apply border-border;
     }
+
     body {
         @apply font-sans antialiased bg-background text-foreground;
     }
 }
 
 @layer base {
-  * {
-    @apply border-border;
+    * {
+        @apply border-border;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
     }
+}
+
+.form-builder {
+    padding: 50px 10px 10px 10px;
+    border-radius: 7px;
+    overflow: hidden;
+    position: relative;
+    transition: height ease-in-out 500ms;
+}
+
+.form-builder input, .form-builder select {
+    width: 300px;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.drag-handle-icon-box {
+    position: absolute;
+    left: 5px;
+    top:9px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    cursor: n-resize;
+}
+
+.drag-handle-icon-box svg{
+    position: absolute;
+    left: 12px;
+    top: 12px;
+}
+
+.title-component-icon-box{
+    position: absolute;
+    right: 5px;
+    top:5px;
+}
+.title-component-icon-box svg{
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    transition: all ease-in-out 500ms;
+}
+
+.title-component-icon-box a.title-box{
+    position: absolute;
+    right: 25px;
+    padding-right: 10px;
+    top: 8px;
+}
+.form-builder input:focus , .form-builder select:focus{
+    outline: 0;
+}
+
+.form-builder.input-color{
+    background-color: rgb(253, 236, 214);
+}
+.form-builder.select-color{
+    background-color: rgb(245 214 253);
+}
+.form-builder.range-color{
+    background-color: rgb(218 253 214);
+}
+
+.form-builder.input-color input, .form-builder.input-color select .form-builder.input-color label {
+    background-color: #fdf6ef;
+}
+.form-builder.input-color .drag-handle-icon-box{
+    background-color: #fdf6ef ;
+}
+.input-color.drag-handle-icon-box svg{
+    fill: #ffb46b ;
+}
+.form-builder.input-color .title-component-icon-box svg{
+    fill: #ffb46b ;
+}
+.form-builder.input-color .title-component-icon-box a.title-box{
+    color: #ffb46b ;
+}
+.form-builder.input-color *{
+    color: #ffb46b;
+}
+
+.form-builder.select-color  input, .form-builder.select-color  select .form-builder.select-color  label {
+    background-color: rgb(251, 238, 253);
+}
+.form-builder.select-color .drag-handle-icon-box{
+    background-color: rgb(251, 238, 253) ;
+}
+.select-color .drag-handle-icon-box svg{
+    fill: rgb(231, 151, 250);
+}
+.form-builder.select-color  .title-component-icon-box svg{
+    fill: rgb(231, 151, 250) ;
+}
+.form-builder.select-color  .title-component-icon-box a.title-box{
+    color: rgb(231, 151, 250) ;
+}
+.form-builder.select-color *{
+    color: rgb(231, 151, 250);
+}
+
+
+.form-builder.range-color  input, .form-builder.range-color  select .form-builder.range-color  label {
+    background-color: rgb(240, 253, 238);
+}
+.form-builder.range-color .drag-handle-icon-box{
+    background-color: rgb(240, 253, 238) ;
+}
+.range-color .drag-handle-icon-box svg{
+    fill: #41c634;
+}
+.form-builder.range-color  .title-component-icon-box svg{
+    fill: #41c634 ;
+}
+.form-builder.range-color  .title-component-icon-box a.title-box{
+    color: #41c634 ;
+}
+.form-builder.range-color *{
+    color: #41c634;
 }

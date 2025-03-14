@@ -1,5 +1,5 @@
 "use client"
-import { Search } from "lucide-react";
+import { Search} from "lucide-react";
 import { Label } from "@/components/ui/label";
 import {
     SidebarGroup,
@@ -19,7 +19,7 @@ import {
   } from "@/components/ui/card"
   
 import React, { useEffect, useRef, useState } from "react";
-import { Button } from "./ui/button";
+import Link from "next/link";
 
 
 interface Link {
@@ -52,6 +52,7 @@ export function SearchForm({ ...props }: SearchFormProps) {
         setSearch(event.target.value); 
     };
 
+
     return (
        <div className="relative px-0">
           <form {...props}>
@@ -63,7 +64,6 @@ export function SearchForm({ ...props }: SearchFormProps) {
                     <SidebarInput
                         id="search"
                         placeholder="جست و جو..."
-                        
                         className="pl-8"
                         value={search}
                         onChange={searchHandle} 
@@ -74,7 +74,7 @@ export function SearchForm({ ...props }: SearchFormProps) {
         </form>
          
             {
-                searchResault.length !== links.length &&
+                searchResault.length>0 && searchResault.length !== links.length &&
                 <div className="absolute bootom-0 right-0 w-full px-2 z-50">
                     <Card>
                     <CardHeader>
@@ -83,10 +83,10 @@ export function SearchForm({ ...props }: SearchFormProps) {
                     <CardContent>
                     <SidebarMenu>
                         {
-                            searchResault.map(item=>{
+                            searchResault.map((item , index)=>{
                                 return(
-                                    <SidebarMenuItem>
-                                        <SidebarMenuButton>{item.title}</SidebarMenuButton>
+                                    <SidebarMenuItem key={index}>
+                                        <Link href={item.link}>{item.title}</Link>
                                     </SidebarMenuItem>
                                 )
                             })

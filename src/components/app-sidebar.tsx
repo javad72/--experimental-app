@@ -15,6 +15,7 @@ import {APP_URL_HOST} from "@/lib/const";
 import {ChevronDown} from "lucide-react";
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@/components/ui/collapsible";
 import Logo from "@/components/logo";
+import Link from "next/link";
 
 // دریافت داده‌های منو در سمت سرور
 async function getMenuData() {
@@ -33,12 +34,12 @@ export async function AppSidebar(props) {
     const menu = await getMenuData();
     let links = [];
     menu.forEach((item) => {
-        if (item.items && item.items.length > 0 && item.link !== '#') {
+        if (item.items && item.items.length > 0 && item.url !== '#') {
             item.items.forEach((subItem) => {
-                links.push({ link: subItem.link, title: subItem.title });
+                links.push({ link: subItem.url, title: subItem.title });
             });
         } else {
-            links.push({ link: item.link, title: item.title });
+            links.push({ link: item.url, title: item.title });
         }
     });
 
@@ -73,7 +74,7 @@ const Menus = ({navMain}) => {
                     {
                         item.items.length == 0 &&
                         <SidebarMenuButton>
-                            <SvgIcon svgString={item.icon}/> <span>{item.title}</span>
+                           <Link href={item.url}>{item.title}</Link>
                         </SidebarMenuButton>
                     }
                     {item.items.length > 0 && (
@@ -88,7 +89,7 @@ const Menus = ({navMain}) => {
                                     {item.items.map((subItem) => (
                                         <SidebarMenuSubItem key={subItem.id}>
                                             <SidebarMenuSubButton asChild>
-                                                <a href={subItem.url}>{subItem.title}</a>
+                                                <Link href={subItem.url}>{subItem.title}</Link>
                                             </SidebarMenuSubButton>
                                         </SidebarMenuSubItem>
                                     ))}
@@ -103,18 +104,3 @@ const Menus = ({navMain}) => {
         </SidebarMenu>
     );
 };
-
-<SidebarMenu>
-  <Collapsible defaultOpen className="group/collapsible">
-    <SidebarMenuItem>
-      <CollapsibleTrigger asChild>
-        <SidebarMenuButton />
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <SidebarMenuSub>
-          <SidebarMenuSubItem />
-        </SidebarMenuSub>
-      </CollapsibleContent>
-    </SidebarMenuItem>
-  </Collapsible>
-</SidebarMenu>
